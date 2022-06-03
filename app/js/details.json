@@ -1,0 +1,13 @@
+{
+    "canvas": {
+        "width": 15,
+        "height": 10,
+        "photo" : {
+            "id": "filname",
+            "width": 20,
+            "height": 20,
+            "x": -2.5,
+            "y": -5
+        }
+    }
+}

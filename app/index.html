@@ -1,9 +1,68 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Test application</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1"/>     
-    </head>
-    <body></body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Photo Editor Application</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+          Upload an image from your device or Load it from JSON
+        </h5>
+        <p class="card-text">Upload or load an image using this application</p>
+        <input type="file" id="fileSelector" class="btn btn-primary" />
+        
+        <button type="button" id="submit" class="btn dled2 btn-danger mt-1">
+          Submit Data
+        </button>
+        
+        <p class="status"></p>
+      </div>
+    </div>
+    <div class="card care mt-10">
+      <img src="https://i.stack.imgur.com/ATB3o.gif" alt="" />
+    </div>
+    <div class="card  mt-10">
+      
+      <canvas id="editorCanvas"></canvas>
+      <div class="buttons">
+        <button type="button" id="zout" class="btn dled btn-success mt-1">
+          Scale 50%
+        </button>
+        <button type="button" id="zin" class="btn dled1 btn-danger mt-1">
+          Scale 200%
+        </button>
+       
+       
+      </div>
+    <div class="card prev mt-10">
+      <img id="preview" src="" alt="Loaded Image">       
+      </div>
+    </div>
+    <button id="load"  class="learn-more mycustombtn mt-1">
+      <span class="circle" aria-hidden="true">
+      <span class="icon arrow"></span>
+      </span>
+      <span class="button-text">Load Image</span>
+    </button>   
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/2.0.0-beta/cropper.min.js"
+      integrity="sha512-BElV2mz/xl8EHjF95k5qWcXWX28VahaYejkixMk04pwUz3i+TxbTKr4neBkor2S8R9v/0fqGz4ViFo/qrIyq7w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
