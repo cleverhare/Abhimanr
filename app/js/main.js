@@ -13,9 +13,15 @@ const AppView = () => {
     let dled = document.querySelector('.dled')
     let dled1 = document.querySelector('.dled1')
     let dled2 = document.querySelector('.dled2')
+    let dled3 = document.querySelector('.dled3')
+    let dled4 = document.querySelector('.dled4')
     let care = document.querySelector('.care')
     let prev = document.querySelector('.prev')
+    let buttons = document.querySelector('.buttons')
+    let btns = document.querySelector('.btns')
     let imgwidth= 500;
+    let x = 0;
+    let y = 0
 
     
     fileSelector.onchange = function( e ) {
@@ -55,8 +61,12 @@ const AppView = () => {
                             dled1.style.display = "block"
                             dled.style.display = "block"
                             dled2.style.display = "block"
+                            dled3.style.display = "block"
+                            dled4.style.display = "block"
                             let zin = document.getElementById('zin')
                             let zout = document.getElementById('zout')
+                            let mleft = document.getElementById('mleft')
+                            let mright = document.getElementById('mright')
                           
                          
                             zin.addEventListener("click", ()=>{
@@ -72,6 +82,66 @@ const AppView = () => {
                                 editorCanvas.classList.add("image-close");
                                 zout.disabled = true
                                  imgwidth = 250
+                            })
+                            mleft.addEventListener("click", ()=>{
+                                zin.disabled = true
+                                zout.disabled = true
+                                if (imgwidth == 500) {
+                                    mright.disabled = false
+                                    editorCanvas.classList.remove('canleft')
+                                    editorCanvas.classList.add('canright')
+                                    mleft.disabled = true
+                                    x = 820;
+                                    // y = 820
+                                    
+                                }
+                                if (imgwidth == 250) {
+                                    mright.disabled = false
+                                    editorCanvas.classList.remove('canleft2')
+                                    editorCanvas.classList.add('canright2')
+                                    mleft.disabled = true
+                                    x = 1040;
+                                    // y = 1040
+                                    
+                                }
+                                if (imgwidth == 1000) {
+                                    mright.disabled = false
+                                    editorCanvas.classList.remove('canleft3')
+                                    editorCanvas.classList.add('canright3')
+                                    mleft.disabled = true
+                                    x = 330;
+                                    // y = 330
+                                    
+                                }
+                            })
+                            
+                            mright.addEventListener("click", ()=>{
+                                zin.disabled = true
+                                zout.disabled = true
+                                if (imgwidth == 500) {
+                                    mleft.disabled = false
+                                    editorCanvas.classList.remove('canright')
+                                    editorCanvas.classList.add('canleft')
+                                    mright.disabled = true
+                                    x = -820;
+                                    // y = 820
+                                }
+                                if (imgwidth == 250) {
+                                    mleft.disabled = false
+                                    editorCanvas.classList.remove('canright2')
+                                    editorCanvas.classList.add('canleft2')
+                                    mright.disabled = true
+                                    x = -1040;
+                                    // y = 1040
+                                }
+                                if (imgwidth == 1000) {
+                                    mleft.disabled = false
+                                    editorCanvas.classList.remove('canright3')
+                                    editorCanvas.classList.add('canleft3')
+                                    mright.disabled = true
+                                    x = -330;
+                                    // y = 330
+                                }
                             })
                             
                             
@@ -89,8 +159,8 @@ const AppView = () => {
                                 "photo" : {
                                     "id": "User Uploaded Photo",
                                     "width": `${imgwidth}`,
-                                    "x": 0,
-                                    "y": 0
+                                    "x": `${x}`,
+                                    "y": `${y}`
                                 }
                             }
                         }
@@ -100,6 +170,9 @@ const AppView = () => {
                         let status = document.querySelector('.status')
                         status.innerHTML = "Your Image and Canvas details has been succesfully submitted"
                         status.style.color = "green"
+                        setTimeout(() => {
+                            status.style.display = "none"
+                        }, 2000);
                     })
                     
                                         
@@ -116,7 +189,7 @@ const AppView = () => {
          prev.style.display = "block"
          let jsondata = localStorage.getItem('detailsjson')
          let parseddata = JSON.parse(jsondata)
-        //  console.log(parseddata.canvas.photo.width)
+         console.log(parseddata.canvas.photo.x)
 
         let genwidth = parseddata.canvas.photo.width
         if (genwidth == 500) {
@@ -130,6 +203,7 @@ const AppView = () => {
         }
         preview.style.width = parseddata.canvas.photo.width + 'px'
         prev.style.width = genwidth + 'px'
+        prev.style.marginRight = parseddata.canvas.photo.x + 'px'
 
       }  
       else{

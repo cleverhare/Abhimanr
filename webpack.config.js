@@ -14,7 +14,7 @@ module.exports = {
         stats: { colors: true },
         hot: true,
         open: true,
-        port: 8090,
+        port: 80,
         contentBase: path.join(__dirname, 'dist')
     },
     module: {
